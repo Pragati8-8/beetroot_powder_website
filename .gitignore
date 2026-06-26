@@ -26,5 +26,7 @@ temp/
 tmp/
 temp_clone/
 
-# Ignore package.json locally to force Vercel static zero-config auto-detection
+# Ignore local development and helper files to force Vercel static zero-config auto-detection
 package.json
+server.js
+copy_assets.js
