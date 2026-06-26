@@ -72,12 +72,27 @@ function drawFrame(index) {
     
     const img = images[index - 1];
     
-    // Calculate aspect ratio scale factors to cover the screen
-    const scale = Math.max(canvas.width / imgWidth, canvas.height / imgHeight);
-    const w = imgWidth * scale;
-    const h = imgHeight * scale;
-    const x = (canvas.width - w) / 2;
-    const y = (canvas.height - h) / 2;
+    let scale;
+    let w, h, x, y;
+    
+    // Check if we are in portrait (mobile/tablet) or landscape (desktop)
+    if (canvas.width < canvas.height) {
+        // Mobile Portrait Mode:
+        // Scale the image so the jar fits nicely (approx 1.8x screen width to avoid heavy cropping)
+        scale = (canvas.width / imgWidth) * 1.8;
+        w = imgWidth * scale;
+        h = imgHeight * scale;
+        x = (canvas.width - w) / 2; // Center horizontally
+        // Position the jar in the bottom part of the screen (leaves top half clear for text)
+        y = canvas.height * 0.55 - (h / 2); 
+    } else {
+        // Desktop Landscape Mode: Standard cover scaling
+        scale = Math.max(canvas.width / imgWidth, canvas.height / imgHeight);
+        w = imgWidth * scale;
+        h = imgHeight * scale;
+        x = (canvas.width - w) / 2;
+        y = (canvas.height - h) / 2;
+    }
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, x, y, w, h);
