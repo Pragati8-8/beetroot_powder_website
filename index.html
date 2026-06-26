@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VITAL BEET - Pure Beetroot Powder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#b71e39",
+                        "on-primary-fixed-variant": "#920026",
+                        "tertiary-container": "#893b23",
+                        "tertiary": "#6b250e",
+                        "primary-container": "#a60d2f",
+                        "surface-container": "#ffe9e8",
+                        "on-primary-fixed": "#40000b",
+                        "inverse-surface": "#3d2c2d",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "inverse-on-surface": "#ffedec",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#f8dcdc",
+                        "surface-container-high": "#fde2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#fff0f0",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "outline-variant": "#e2bebe",
+                        "surface-bright": "#fff8f7",
+                        "background": "#fff8f7",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#ffb3b5",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#261818",
+                        "secondary-fixed-dim": "#adcfae",
+                        "secondary-fixed": "#c8ecc9",
+                        "outline": "#8e7070",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#793018",
+                        "surface-dim": "#efd4d4",
+                        "on-secondary-container": "#4c6c50",
+                        "on-secondary-fixed": "#03210c",
+                        "secondary-container": "#c8ecc9",
+                        "tertiary-fixed": "#ffdbd1",
+                        "secondary": "#47664b",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#ffb3b5",
+                        "on-secondary-fixed-variant": "#2f4d34",
+                        "on-tertiary-container": "#ffb59f",
+                        "primary-fixed": "#ffdada",
+                        "surface-variant": "#f8dcdc",
+                        "surface": "#fff8f7",
+                        "primary": "#7d001f",
+                        "on-surface-variant": "#5a4041",
+                        "on-background": "#261818",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "label-md": ["Montserrat"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "caption": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link rel="stylesheet" href="styles.css">
+<style>
+        .ambient-shadow { box-shadow: 0 10px 40px rgba(183, 30, 57, 0.04); }
+    </style>
+</head>
+<body class="antialiased">
+
+<!-- Dedicated Image Pre-loader -->
+<div id="loader" class="loader-container">
+    <div class="loader-content">
+        <h2 class="loader-title text-primary-fixed-dim">VITAL BEET</h2>
+        <div class="progress-bar-bg">
+            <div id="progress-bar" class="progress-bar-fill"></div>
+        </div>
+        <div id="loading-text" class="loading-percentage">0%</div>
+    </div>
+</div>
+
+<!-- Fixed Background Canvas Layer -->
+<div class="canvas-container">
+    <canvas id="animation-canvas"></canvas>
+</div>
+
+<!-- TopNavBar -->
+<nav id="navbar" class="fixed top-0 left-0 w-full transition-all duration-300 z-50 py-md px-gutter text-white">
+    <div class="flex justify-between items-center max-w-container-max mx-auto w-full">
+        <div id="nav-logo" class="font-display-lg text-headline-md tracking-tighter text-white cursor-pointer" data-scroll-to="shop">
+            VITAL BEET
+        </div>
+        <div id="nav-links" class="hidden md:flex gap-lg">
+            <a class="text-white border-b-2 border-white pb-1 font-label-md text-label-md hover:opacity-80 transition-opacity duration-300 scale-95 active:scale-90 transition-transform" href="#shop" data-scroll-to="shop">Shop</a>
+            <a class="text-white/80 hover:text-white transition-colors font-label-md text-label-md hover:opacity-80 transition-opacity duration-300 scale-95 active:scale-90 transition-transform" href="#benefits" data-scroll-to="benefits">Benefits</a>
+            <a class="text-white/80 hover:text-white transition-colors font-label-md text-label-md hover:opacity-80 transition-opacity duration-300 scale-95 active:scale-90 transition-transform" href="#recipes" data-scroll-to="recipes">Recipes</a>
+            <a class="text-white/80 hover:text-white transition-colors font-label-md text-label-md hover:opacity-80 transition-opacity duration-300 scale-95 active:scale-90 transition-transform" href="#reviews" data-scroll-to="reviews">Reviews</a>
+        </div>
+        <div id="nav-actions" class="flex items-center gap-md text-white">
+            <button class="hover:opacity-80 transition-opacity duration-300 scale-95 active:scale-90 transition-transform">
+                <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Scroll Track (500vh depth) -->
+<div class="scroll-track">
+    <!-- Sticky Section containing the text overlays and the bottle area -->
+    <div class="sticky-hero-container">
+        <div class="max-w-container-max mx-auto px-gutter w-full h-full flex flex-col md:flex-row items-center justify-between relative">
+            <!-- Background Radial Glow -->
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary-fixed rounded-full blur-3xl opacity-30 z-0 pointer-events-none"></div>
+
+            <!-- Slides wrapper (Left Side on Desktop, Overlaid on Mobile) -->
+            <div class="w-full md:w-1/2 h-[70vh] md:h-full flex items-center relative z-20">
+                <!-- Slide 1: Hero Text -->
+                <div class="scroll-slide active space-y-md w-full" id="slide-1">
+                    <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary-fixed-dim">
+                        Nature’s Superfood: Pure Beetroot Powder
+                    </h1>
+                    <p class="font-body-lg text-body-lg text-text-muted max-w-lg font-body-md">
+                        Boost your energy, revitalize your skin, and add natural color to your meals—100% pure and preservative-free.
+                    </p>
+                    <div class="flex flex-wrap gap-md pt-base">
+                        <button id="shop-now-btn" class="bg-primary text-white font-label-md text-label-md py-md px-lg rounded-xl hover:bg-primary-light transition-colors shadow-lg shadow-primary/20">
+                            Shop Now
+                        </button>
+                        <button class="border border-text-muted text-text-muted font-label-md text-label-md py-md px-lg rounded-xl hover:bg-white/5 transition-colors" data-scroll-to="benefits">
+                            Discover Benefits
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Boost Performance -->
+                <div class="scroll-slide space-y-md opacity-0 absolute w-full" id="slide-2">
+                    <h2 class="font-headline-md text-headline-md text-primary-fixed-dim">
+                        100% Pure & Organic
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-text-muted max-w-lg font-body-md">
+                        Preservative-free, nutrient-dense, and naturally rich in dietary nitrates to support circulation, stamina, and cardiovascular health.
+                    </p>
+                </div>
+
+                <!-- Slide 3: Glow Naturally & Color Recipes -->
+                <div class="scroll-slide space-y-md opacity-0 absolute w-full" id="slide-3">
+                    <h2 class="font-headline-md text-headline-md text-primary-fixed-dim">
+                        Versatile Superfood
+                    </h2>
+                    <p class="font-body-lg text-body-lg text-text-muted max-w-lg font-body-md">
+                        A vibrant, healthy addition to smoothies, baked goods, and lattes. Rich in antioxidants for natural skin-care masks and DIY lip tints.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Empty Column on the Right to leave space for the background bottle -->
+            <div class="hidden md:block w-1/2 h-full pointer-events-none"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Remaining Content Wrapper (positioned relatively with higher z-index to overlay canvas) -->
+<div class="relative z-10 bg-surface text-on-surface">
+    <!-- The Multipurpose Advantage -->
+    <section id="benefits" class="bg-surface-container-lowest py-xl">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="text-center mb-lg space-y-sm">
+                <h2 class="font-headline-md text-headline-md text-primary">The Multipurpose Advantage</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto font-body-md">One powder, endless possibilities for your wellness journey.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+                <!-- Column 1 -->
+                <div class="bg-surface p-[32px] rounded-2xl ambient-shadow text-center flex flex-col items-center gap-sm">
+                    <div class="w-16 h-16 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center mb-base">
+                        <span class="material-symbols-outlined text-[32px]" data-icon="favorite">favorite</span>
+                    </div>
+                    <h3 class="font-headline-md text-[24px] text-on-surface">Health &amp; Fitness</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant font-body-md">Supports blood circulation, endurance, and cardiovascular health with natural nitrates.</p>
+                </div>
+                <!-- Column 2 -->
+                <div class="bg-surface p-[32px] rounded-2xl ambient-shadow text-center flex flex-col items-center gap-sm">
+                    <div class="w-16 h-16 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center mb-base">
+                        <span class="material-symbols-outlined text-[32px]" data-icon="face_retouching_natural">face_retouching_natural</span>
+                    </div>
+                    <h3 class="font-headline-md text-[24px] text-on-surface">Skin &amp; Hair</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant font-body-md">Rich in antioxidants, gives a natural, radiant pink glow for DIY face masks and lip tints.</p>
+                </div>
+                <!-- Column 3 -->
+                <div class="bg-surface p-[32px] rounded-2xl ambient-shadow text-center flex flex-col items-center gap-sm">
+                    <div class="w-16 h-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mb-base">
+                        <span class="material-symbols-outlined text-[32px]" data-icon="restaurant">restaurant</span>
+                    </div>
+                    <h3 class="font-headline-md text-[24px] text-on-surface">Natural Colorant</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant font-body-md">A vibrant, healthy alternative for baking, smoothies, lattes, and savory soups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipes Section -->
+    <section id="recipes" class="bg-surface-container-low py-xl">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="text-center mb-lg space-y-sm">
+                <h2 class="font-headline-md text-headline-md text-primary">Vital Recipes</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto font-body-md">Simple, delicious ways to power up your daily routine.</p>
+            </div>
+            
+            <!-- Horizontal Carousel (swipeable on mobile, 3 columns on desktop) -->
+            <div class="flex gap-lg overflow-x-auto snap-x snap-mandatory scrollbar-none pb-md md:grid md:grid-cols-3">
+                
+                <!-- Card 1 -->
+                <div class="min-w-[85vw] md:min-w-0 snap-center bg-surface-container-lowest p-[32px] rounded-2xl border border-primary-fixed/10 ambient-shadow flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/20">
+                    <div class="space-y-md">
+                        <div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[24px]">bolt</span>
+                        </div>
+                        <h3 class="font-headline-md text-[24px] text-on-surface">The Pre-Workout Shot</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant font-body-md">
+                            A powerful, concentrated boost to kickstart your stamina, oxygenate blood flow, and elevate endurance before training.
+                        </p>
+                    </div>
+                    <div class="mt-lg">
+                        <h4 class="font-label-md text-caption text-primary uppercase tracking-wider mb-sm">Ingredients</h4>
+                        <div class="flex flex-wrap gap-xs">
+                            <span class="bg-primary/5 text-primary border border-primary/10 px-sm py-xs rounded-full text-caption font-label-md">Beet Powder</span>
+                            <span class="bg-primary/5 text-primary border border-primary/10 px-sm py-xs rounded-full text-caption font-label-md">Lemon Juice</span>
+                            <span class="bg-primary/5 text-primary border border-primary/10 px-sm py-xs rounded-full text-caption font-label-md">Fresh Ginger</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="min-w-[85vw] md:min-w-0 snap-center bg-surface-container-lowest p-[32px] rounded-2xl border border-primary-fixed/10 ambient-shadow flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/20">
+                    <div class="space-y-md">
+                        <div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[24px]">local_drink</span>
+                        </div>
+                        <h3 class="font-headline-md text-[24px] text-on-surface">The Post-Workout Glow</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant font-body-md">
+                            Replenish nutrients, flush toxins, and promote clean, radiant skin recovery with an antioxidant-packed berry infusion.
+                        </p>
+                    </div>
+                    <div class="mt-lg">
+                        <h4 class="font-label-md text-caption text-primary uppercase tracking-wider mb-sm">Ingredients</h4>
+                        <div class="flex flex-wrap gap-xs">
+                            <span class="bg-primary/5 text-primary border border-primary/10 px-sm py-xs rounded-full text-caption font-label-md">Beet Powder</span>
+                            <span class="bg-primary/5 text-primary border border-primary/10 px-sm py-xs rounded-full text-caption font-label-md">Mixed Berries</span>
+                            <span class="bg-primary/5 text-primary border border-primary/10 px-sm py-xs rounded-full text-caption font-label-md">Coconut Water</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="min-w-[85vw] md:min-w-0 snap-center bg-surface-container-lowest p-[32px] rounded-2xl border border-primary-fixed/10 ambient-shadow flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/20">
+                    <div class="space-y-md">
+                        <div class="w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[24px]">breakfast_dining</span>
+                        </div>
+                        <h3 class="font-headline-md text-[24px] text-on-surface">Stamina Oatmeal</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant font-body-md">
+                            A wholesome, slow-burning carbohydrate base infused with natural nitrates and honey to keep energy levels stable all morning.
+                        </p>
+                    </div>
+                    <div class="mt-lg">
+                        <h4 class="font-label-md text-caption text-primary uppercase tracking-wider mb-sm">Ingredients</h4>
+                        <div class="flex flex-wrap gap-xs">
+                            <span class="bg-primary/5 text-primary border border-primary/10 px-sm py-xs rounded-full text-caption font-label-md">Beet Powder</span>
+                            <span class="bg-primary/5 text-primary border border-primary/10 px-sm py-xs rounded-full text-caption font-label-md">Warm Oats</span>
+                            <span class="bg-primary/5 text-primary border border-primary/10 px-sm py-xs rounded-full text-caption font-label-md">Raw Honey</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Reviews Section -->
+    <section id="reviews" class="bg-surface-container py-xl">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="text-center mb-lg space-y-sm">
+                <h2 class="font-headline-md text-headline-md text-primary">What Our Customers Say</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto font-body-md">Real feedback from health, beauty, and culinary enthusiasts.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+                <!-- Review 1 -->
+                <div class="bg-surface p-md rounded-2xl ambient-shadow flex flex-col justify-between">
+                    <p class="font-body-md text-body-md text-on-surface-variant italic font-body-md">
+                        "The energy boost is immediate and clean, without any jittery feelings. I mix a scoop in my pre-workout drink every day."
+                    </p>
+                    <div class="mt-md flex items-center gap-sm">
+                        <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-md">
+                            M
+                        </div>
+                        <div>
+                            <div class="font-label-md text-label-md text-on-surface font-semibold">Marcus T.</div>
+                            <div class="caption text-caption text-primary">Fitness Coach</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="bg-surface p-md rounded-2xl ambient-shadow flex flex-col justify-between">
+                    <p class="font-body-md text-body-md text-on-surface-variant italic font-body-md">
+                        "I use Vital Beet for my DIY face masks and lip tints! It gives a gorgeous, natural pink glow and feels super nourishing."
+                    </p>
+                    <div class="mt-md flex items-center gap-sm">
+                        <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md">
+                            S
+                        </div>
+                        <div>
+                            <div class="font-label-md text-label-md text-on-surface font-semibold">Sophia L.</div>
+                            <div class="caption text-caption text-primary">Beauty Blogger</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="bg-surface p-md rounded-2xl ambient-shadow flex flex-col justify-between">
+                    <p class="font-body-md text-body-md text-on-surface-variant italic font-body-md">
+                        "Amazing natural red colorant! My beetroot cupcakes and morning smoothies look so vibrant and taste delicious."
+                    </p>
+                    <div class="mt-md flex items-center gap-sm">
+                        <div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-label-md">
+                            K
+                        </div>
+                        <div>
+                            <div class="font-label-md text-label-md text-on-surface font-semibold">Karen R.</div>
+                            <div class="caption text-caption text-primary">Culinary Artist</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low dark:bg-surface-container-highest full-width rounded-t-xl mt-xl">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-lg px-gutter py-xl max-w-container-max mx-auto w-full">
+            <div class="space-y-sm">
+                <div class="font-display-lg text-headline-md text-primary dark:text-primary-fixed-dim">
+                    VITAL BEET
+                </div>
+                <p class="font-body-md text-body-md text-on-surface dark:text-on-surface font-body-md">
+                    © 2024 VITAL BEET. Purity in every scoop.
+                </p>
+            </div>
+            <div class="col-span-1 md:col-span-3 flex flex-wrap gap-md md:justify-end items-start font-label-md text-label-md">
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-100 hover:opacity-80" href="#">Terms of Service</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-100 hover:opacity-80" href="#">Shipping &amp; Returns</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-100 hover:opacity-80" href="#">Contact Us</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-surface hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-100 hover:opacity-80" href="#">Wholesale</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="app.js"></script>
+</body></html>

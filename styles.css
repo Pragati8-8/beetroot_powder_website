@@ -1,0 +1,184 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-dark: #070103;
+    --primary: #94132a;
+    --primary-light: #c82343;
+    --text-main: #f9f6f7;
+    --text-muted: #c9babb;
+    --font-heading: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: #2a050c;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Dedicated Image Pre-loader */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0c0205;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+}
+
+.loader-container.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+}
+
+.loader-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+.loading-percentage {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-light);
+}
+
+/* Fixed Fullscreen Background Canvas Layer */
+.canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(148, 19, 42, 0.05) 0%, rgba(7, 1, 3, 0) 70%);
+}
+
+#animation-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Scroll Track for depth mapping */
+.scroll-track {
+    position: relative;
+    height: 500vh; /* Scroll track depth */
+    width: 100%;
+    z-index: 2;
+}
+
+.sticky-hero-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.scroll-slide {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    will-change: opacity, transform;
+}
+
+/* Scrolled Navbar Styling */
+#navbar.scrolled {
+    background-color: rgba(255, 248, 247, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 40px rgba(183, 30, 57, 0.05);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: #261818 !important;
+}
+
+#navbar.scrolled #nav-logo {
+    color: #7d001f !important;
+}
+
+#navbar.scrolled #nav-links a {
+    color: #5a4041 !important;
+    border-color: transparent;
+}
+
+#navbar.scrolled #nav-links a.border-white {
+    border-color: #7d001f !important;
+    color: #7d001f !important;
+}
+
+#navbar.scrolled #nav-actions {
+    color: #7d001f !important;
+}
+
+/* Hide scrollbars for carousels while maintaining native scrollability */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+

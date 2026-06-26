@@ -1,0 +1,19 @@
+{
+  "name": "beetroot-powder-website",
+  "version": "1.0.0",
+  "description": "VITAL BEET - Pure Beetroot Powder scroll animation website.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "echo 'Static build complete'"
+  },
+  "keywords": [
+    "beetroot",
+    "powder",
+    "website",
+    "scroll-animation"
+  ],
+  "author": "",
+  "license": "ISC"
+}
