@@ -25,3 +25,6 @@ Thumbs.db
 temp/
 tmp/
 temp_clone/
+
+# Ignore package.json locally to force Vercel static zero-config auto-detection
+package.json
